@@ -1,7 +1,8 @@
 # Ohjelmistotekniikka, harjoitustyö
-*Harjoitustyönä* toteutan ehkä jonkinlaisen *pelin*, esim. **shakin** tai **labyrinttipelin**.
+*Harjoitustyönä* toteutankin **laskinohjelmiston**.
 
 [Laskarit](laskarit)
 
 ## Dokumentaatio
+* [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
 * [Työaikakirjanpito](dokumentaatio/tuntikirjanpito.md)
