@@ -8,12 +8,12 @@ Sovelluksessa on ainakin tavallisia käyttäjiä sekä mahdollisesti myös pää
 ## Toiminnallisuudet
 ### Perusversion toiminnallisuudet
 #### Ennen kirjautumista
-* Käyttäjä voi luoda käyttäjätunnukset tietyillä rajoituksilla
+* Käyttäjä voi luoda käyttäjätunnukset, tietyillä rajoituksilla käyttäjänimen ja salasanan formaattiin
 * Käyttäjä voi kirjautua sisään luomillaan tunnuksilla
-* Käyttäjä voi mahdollisesti myös käyttää sovellusta kirjautumatta, mutta ilman laskuhistoriaa
+* Käyttäjä voi mahdollisesti myös käyttää sovellusta kirjautumatta, jollin ainakaan laskuhistoria ei olisi käytössä
 
 #### Kirjautumisen jälkeen
-* Käyttäjä näkee laskuhistorian
+* Käyttäjä voi selata laskuhistoriaa
     * Käyttäjälle näkyy vain hänen oma historiansa
 * Käyttäjä voi valita mitä laskinohjelmistoa käyttää
 * Käyttäjä voi laskea laskuja valitulla laskinohjelmistolla
