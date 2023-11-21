@@ -1,3 +1,4 @@
 ## Viikko 3
 
-- Lisätty luokka RatNum, jolla voidaan käsitellä rationaalilukuja (tarkka arvo).
+- Toteutettu luokka RatNum, jolla voidaan käsitellä rationaalilukuja (tarkka arvo).
+- Lisätty testit luokan RatNum olioiden välisille yhteen-, vähennys-, kerto- ja jakolaskuille. 
