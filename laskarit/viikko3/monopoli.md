@@ -28,6 +28,10 @@ classDiagram
     Kortti "*" -- "1" Toiminto
 
 
+    class Monopolipeli {
+        aloitusruutu_sijainti
+        vankila_sijainti
+    }
     class Toiminto {
         toiminto()
     }
