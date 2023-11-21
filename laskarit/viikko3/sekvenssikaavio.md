@@ -42,3 +42,5 @@ sequenceDiagram
     bussi244 -->> main: False
     deactivate bussi244
 ```
+
+Esikatselu ei ilmeisesti toimi githubissa 'create participant x' -rivien takia.
