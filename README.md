@@ -1,8 +1,36 @@
-# Ohjelmistotekniikka, harjoitustyö
-*Harjoitustyönä* toteutankin **laskinohjelmiston**.
+# Matriisilaskinohelmisto
+## Valmiin sovelluksen kuvaus:
+Sovelluksella voidaan suorittaa joitakin operaatiota matriiseille, kuten matriisikertolaskuja sekä saattaa matriiseja supistettuun porrasmuotoon Gaussin-Jordanin menetelmällä.
+Ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
 
-[Laskarit](laskarit)
+Sovellus tukee laskuissa vain kokonaisluvuista muodostettuja matriiseja, ei siis esim. polynomeja.
+
 
 ## Dokumentaatio
 * [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
 * [Työaikakirjanpito](dokumentaatio/tuntikirjanpito.md)
+* [Changelog](dokumentaatio/changelog.md)
+
+## Asentaminen
+1. Asenna riippuvuudet:
+```shell
+    poetry install
+```
+2. Käynnistä sovellus:
+```shell
+    poetry run invoke start
+```
+
+## Invoke -komennot
+### Ohjelman käynnistäminen:
+```shell
+    poetry run invoke start
+```
+### Testien ajaminen:
+```shell
+    poetry run invoke test
+```
+### Testikattavuusraportin luominen:
+```shell
+    poetry run invoke coverage-report
+```
