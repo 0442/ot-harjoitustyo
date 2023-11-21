@@ -3,8 +3,6 @@
 Sovelluksella voidaan suorittaa joitakin operaatiota matriiseille, kuten matriisikertolaskuja sekä saattaa matriiseja supistettuun porrasmuotoon Gaussin-Jordanin eliminointimenetelmällä.
 Ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
 
-Sovellus tukee laskuissa vain kokonaisluvuista muodostettuja matriiseja, ei siis esim. polynomeja.
-
 
 ## Dokumentaatio
 * [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
