@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ot-harjoitustyo"
+version = "0.1.0"
+description = ""
+authors = ["82746 <82746@proton.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+invoke = "^2.2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.3.2"
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
