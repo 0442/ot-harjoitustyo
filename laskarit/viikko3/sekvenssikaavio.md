@@ -22,13 +22,13 @@ sequenceDiagram
     activate lippu_luukku
     create participant kallen_kortti
     lippu_luukku ->> kallen_kortti: Matkakortti("Kalle")
-    lippu_luukku -->> main:
+    lippu_luukku -->> main: .
     deactivate lippu_luukku
 
     main ->> rautatietori: lataa_arvoa(kallen_kortti, 3)
     activate rautatietori
     rautatietori ->> kallen_kortti: kasvata_arvoa(3)
-    rautatietori -->> main:
+    rautatietori -->> main: .
     deactivate rautatietori
 
     main ->> ratikka6: osta_lippu(kallen_kortti, 0)
