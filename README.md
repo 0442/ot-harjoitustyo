@@ -1,6 +1,6 @@
 # Matriisilaskinohelmisto
 ## Valmiin sovelluksen kuvaus:
-Sovelluksella voidaan suorittaa joitakin operaatiota matriiseille, kuten matriisikertolaskuja sekä saattaa matriiseja supistettuun porrasmuotoon Gaussin-Jordanin menetelmällä.
+Sovelluksella voidaan suorittaa joitakin operaatiota matriiseille, kuten matriisikertolaskuja sekä saattaa matriiseja supistettuun porrasmuotoon Gaussin-Jordanin eliminointimenetelmällä.
 Ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
 
 Sovellus tukee laskuissa vain kokonaisluvuista muodostettuja matriiseja, ei siis esim. polynomeja.
@@ -16,13 +16,13 @@ Sovellus tukee laskuissa vain kokonaisluvuista muodostettuja matriiseja, ei siis
 ```shell
     poetry install
 ```
-2. Käynnistä sovellus:
+2. Aja sovellus:
 ```shell
     poetry run invoke start
 ```
 
 ## Invoke -komennot
-### Ohjelman käynnistäminen:
+### Ohjelman ajaminen:
 ```shell
     poetry run invoke start
 ```
