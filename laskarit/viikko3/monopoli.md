@@ -1,5 +1,5 @@
 ## Monopoli, luokkakaavio
-
+```mermaid
 classDiagram
     Monopolipeli "1" -- "2" Noppa
     Monopolipeli "1" -- "1" Pelilauta
@@ -45,3 +45,5 @@ classDiagram
         Pelaja omistaja
         List[Talo]|Hotelli rakennukset
     }
+
+```

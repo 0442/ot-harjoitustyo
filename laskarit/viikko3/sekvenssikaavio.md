@@ -1,4 +1,4 @@
-```Mermaid
+```mermaid
 sequenceDiagram
     participant main
     create participant laitehallinto
