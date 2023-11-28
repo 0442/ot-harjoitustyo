@@ -3,6 +3,7 @@ from typing import TypeAlias
 
 from math import gcd
 
+
 class RatNum:
     """A rational number.
 
@@ -21,7 +22,7 @@ class RatNum:
 
         SomeShortAliasName: TypeAlias = RatNum
     ```
-    or import and use the alias R from rational_number.py in place of RatNum.
+    or import and use the alias Rn from rational_number.py in place of RatNum.
 
     Attributes:
     -----------
@@ -30,6 +31,7 @@ class RatNum:
         denominator:
             A non-zero denominator of the rational number. If not given, defaults to 1.
     """
+
     def __init__(
         self,
         numerator: RatNum | int,
@@ -42,12 +44,12 @@ class RatNum:
         # If numerator or denominator is a rational number, reduce to a single rational number.
         top = 1
         bot = 1
-        if numerator.__class__ == RatNum:
+        if numerator.__class__ is RatNum:
             top *= numerator._numerator
             bot *= numerator._denominator
         else:
             top *= numerator
-        if denominator.__class__ == RatNum:
+        if denominator.__class__ is RatNum:
             top *= denominator._denominator
             bot *= denominator._numerator
         else:
@@ -56,8 +58,6 @@ class RatNum:
         self._numerator: RatNum | int = top
         self._denominator: RatNum | int = bot
         self.reduce()
-
-
 
     def reduce(self) -> None:
         """Bring this rational number into reduced form. Returns None."""
@@ -68,12 +68,15 @@ class RatNum:
         dd = self._numerator
         ds = self._denominator
 
-        # negative / negative = positive
+        # Negative / negative = positive.
         if dd < 0 and ds < 0:
             dd, ds = abs(dd), abs(ds)
-        # move negative from denominator to numerator
-        if ds < 0 and dd > 0:
+        # Move negative from denominator to numerator.
+        elif ds < 0 < dd:
             dd, ds = -dd, -ds
+        # If nominator is 0, denominator's sign doesn't matter.
+        elif dd == 0:
+            ds = 1
 
         reducer = gcd(dd, ds)
         self._numerator = dd // reducer
@@ -88,63 +91,65 @@ class RatNum:
         if dd < 0 and ds < 0:
             dd, ds = abs(dd), abs(ds)
         # move negative from denominator to numerator
-        if ds < 0 and dd > 0:
+        elif ds < 0 < dd:
             dd, ds = -dd, -ds
+        # If nominator is 0, denominator's sign doesn't matter.
+        elif dd == 0:
+            ds = 1
 
         reducer = gcd(dd, ds)
         return RatNum(dd // reducer,
                       ds // reducer)
 
-
-
     def __neg__(self) -> RatNum:
         return RatNum(-self._numerator, self._denominator)
 
+    def __mul__(self, __num: RatNum | int) -> RatNum | float:
+        if __num.__class__ is int:
+            return RatNum(self._numerator * __num,
+                          self._denominator)
+        if __num.__class__ is RatNum:
+            return RatNum(self._numerator * __num._numerator,
+                          self._denominator * __num._denominator)
+        if __num.__class__ is float:
+            return (self._numerator / self._denominator) * __num
 
+        raise TypeError((f"unsupported operand type(s) for *: "
+                         f"'{self.__class__}' and '{__num.__class__}'"))
 
-    def __mul__(self, __mult: RatNum | int) -> RatNum | float:
-        if __mult.__class__ is int :
-            return RatNum(self._numerator * __mult,
-                     self._denominator)
-        elif __mult.__class__ is RatNum:
-            return RatNum(self._numerator * __mult._numerator,
-                          self._denominator * __mult._denominator)
-        elif __mult.__class__ is float:
-            return (self._numerator / self._denominator) * __mult
-        else:
-            TypeError(f"can't multiply RatNum by object of type {__mult.__class__}")
+    def __rmul__(self, __num: RatNum | int) -> RatNum:
+        return self.__mul__(__num)
 
-    def __rmul__(self, __mult: RatNum | int ) -> RatNum:
-        return self.__mul__(__mult)
+    def __truediv__(self, __num: RatNum | int) -> RatNum:
+        if __num.__class__ is int:
+            return RatNum(self._numerator, self._denominator * __num)
 
+        if __num.__class__ is RatNum:
+            return RatNum(self._numerator * __num._denominator,
+                          self._denominator * __num._numerator)
 
-
-    def __truediv__(self, __div: RatNum | int) -> RatNum:
-        if __div.__class__ == int:
-            return RatNum(self._numerator, self._denominator * __div)
-
-        elif __div.__class__ == RatNum:
-            return RatNum(self._numerator * __div._denominator,
-                          self._denominator * __div._numerator)
+        raise TypeError((f"unsupported operand type(s) for /: "
+                         f"'{self.__class__}' and '{__num.__class__}'"))
 
     def __rtruediv__(self, __div: RatNum | int) -> RatNum:
         return self.__truediv__(__div)
 
-
-
     def __add__(self, __num: RatNum | int) -> RatNum:
-        if __num.__class__ == int:
+        if __num.__class__ is int:
             return RatNum(self._numerator + __num * self._denominator,
                           self._denominator)
 
-        if __num.__class__ == RatNum:
+        if __num.__class__ is RatNum:
             if __num._denominator == self._denominator:
                 return RatNum(self._numerator + __num._numerator,
                               self._denominator)
-            else:
-                return RatNum((self._numerator * __num._denominator +
-                              __num._numerator * self._denominator),
-                              self._denominator * __num._denominator)
+
+            return RatNum((self._numerator * __num._denominator +
+                           __num._numerator * self._denominator),
+                          self._denominator * __num._denominator)
+
+        raise TypeError((f"unsupported operand type(s) for +: "
+                         f"'{self.__class__}' and '{__num.__class__}'"))
 
     def __radd__(self, __num: RatNum | int) -> RatNum:
         return self.__add__(__num)
@@ -155,25 +160,20 @@ class RatNum:
     def __rsub__(self, __num: RatNum | int) -> RatNum:
         return self.__sub__(__num)
 
-
-
     def __pow__(self, __power: int) -> RatNum:
         return RatNum(self._numerator**__power,
                       self._denominator**__power)
-
-
 
     def __eq__(self, __num: RatNum | int) -> bool:
 
         # Rational number can equal an integer only when the denominator is 1.
         # self._denominator is always 1 when this RatNum can be considered an
         # int as RatNums are reduced after every calculation.
-        if __num.__class__ == int and self._denominator == 1:
+        if __num.__class__ is int and self._denominator == 1:
             return self._numerator == __num
 
-        if __num.__class__ == RatNum:
-            if self._numerator == __num._numerator and self._denominator == __num._denominator:
-                return True
+        if __num.__class__ is RatNum:
+            return self._numerator == __num._numerator and self._denominator == __num._denominator
 
         return False
 
@@ -181,40 +181,26 @@ class RatNum:
         return self.__eq__(__num)
 
     def __lt__(self, __num: RatNum | int) -> bool:
-        if __num.__class__ == int:
-            if __num * self._denominator > self._numerator:
-                return True
+        if __num.__class__ is int:
+            return __num * self._denominator > self._numerator
 
-        # TODO: may not work properly with rational numbers with small differences.
-        if __num.__class__ == RatNum:
-            if self._numerator / self._denominator > __num._numerator / __num._denominator:
-                return True
+        if __num.__class__ is RatNum:
+            # Scale to same denominator and then compare numerators
+            return self._numerator * __num._denominator < __num._numerator * self._denominator
 
         return False
 
     def __gt__(self, __num: RatNum | int) -> bool:
-        if __num.__class__ == int:
-            if __num * self._denominator < self._numerator:
-                return True
-
-        # TODO: may not work properly with rational numbers with small differences.
-        if __num.__class__ == RatNum:
-            if self._numerator / self._denominator < __num._numerator / __num._denominator:
-                return True
+        if __num.__class__ in (RatNum, int):
+            return not self.__lt__(__num) and __num != 0
 
         return False
 
     def __le__(self, __num: RatNum | int) -> bool:
-        if self.__eq__(__num) or self.__lt__(__num):
-            return True
-        return False
+        return self.__eq__(__num) or self.__lt__(__num)
 
     def __ge__(self, __num: RatNum | int) -> bool:
-        if self.__eq__(__num) or self.__gt__(__num):
-            return True
-        return False
-
-
+        return self.__eq__(__num) or self.__gt__(__num)
 
     def __str__(self) -> str:
         """Returns the rational number as a string, e.g. "22/7"."""
@@ -222,7 +208,8 @@ class RatNum:
 
         if r._numerator == 0:
             return "0"
-        elif r._denominator == 1:
+
+        if r._denominator == 1:
             return str(r._numerator)
 
         return f"{r._numerator}/{r._denominator}"
@@ -230,4 +217,5 @@ class RatNum:
     def __repr__(self) -> str:
         return self.__str__()
 
-R: TypeAlias = RatNum
+
+Rn: TypeAlias = RatNum

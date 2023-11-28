@@ -1,15 +1,14 @@
-from typing import TypeAlias
 from random import randint
+import ui.ui
 
-from matrix.rational_number import RatNum
+from matrix.rational_number import Rn
 
-R: TypeAlias = RatNum
 
-def random_ratnum_sum():
-    nums = [R(randint(-99, 99), randint(1,99)) for _ in range(3)]
+def ratnum_demo():
+    nums = [Rn(randint(-99, 99), randint(1, 99)) for _ in range(3)]
 
     string = []
-    for i,n in enumerate(nums):
+    for i, n in enumerate(nums):
         if i != 0:
             if n >= 0:
                 string.append(" + " + str(n))
@@ -18,7 +17,8 @@ def random_ratnum_sum():
         else:
             string.append(str(n))
 
-    return f"{''.join(string)} = {sum(nums)}"
+    print(f"{''.join(string)} = {sum(nums)}")
+
 
 if __name__ == "__main__":
-    print(random_ratnum_sum())
+    ratnum_demo()
