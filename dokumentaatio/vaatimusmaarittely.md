@@ -27,3 +27,5 @@ Sovelluksessa on ainakin tavallisia käyttäjiä sekä mahdollisesti myös pää
     * laskinohjelman jolla matriiseja voisi viedä redusoituun porrasmuotoon.
     * laskinohjelman jolla voisi etsiä käänteismatriisin
     * tuki polynomeille matriisilaskuissa
+
+(Ei "tehty" -merkintöjä sillä ei vielä täysin valmiita toiminnalisuuksia.)
