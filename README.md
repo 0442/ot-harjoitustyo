@@ -9,6 +9,7 @@ Ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
 * [Työaikakirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [Changelog](dokumentaatio/changelog.md)
 * [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
+* [Release](https://github.com/0442/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Asentaminen
 1. Asenna riippuvuudet:
