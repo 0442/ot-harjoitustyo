@@ -1,6 +1,6 @@
 import unittest
 
-from matrix.rational_number import Rn
+from calculator.utils.rational_number import Rn
 
 
 class TestRatNumWithInts(unittest.TestCase):
