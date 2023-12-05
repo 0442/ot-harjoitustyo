@@ -21,13 +21,11 @@ class UI:
     def _open_main_view(self):
         if self._current_view:
             self._close_current_view()
-        self._current_view = MainView(self._root,
-                                      self._open_login_view,
-                                      self._open_history_view)
+        self._current_view = CalculatorView(self._root,
+                                            self._calculator,
+                                            self._open_login_view,
+                                            self._open_history_view)
         self._current_view.pack()
-
-    def _open_history_view(self):
-        ...
 
     def _open_login_view(self):
         if self._current_view:
@@ -35,9 +33,17 @@ class UI:
         self._current_view = LoginView(self._root, self._open_main_view)
         self._current_view.pack()
 
+    def _open_history_view(self):
+        if self._current_view:
+            self._close_current_view()
+        self._current_view = HistoryView(self._root,
+                                        None,
+                                        self._open_main_view)
+        self._current_view.pack()
 
     def start(self):
         self._open_main_view()
+
 
 window = Tk()
 window.title("Matriisilaskin")
