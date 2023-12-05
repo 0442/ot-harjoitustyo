@@ -12,7 +12,7 @@ classDiagram
     MatrixCalculator ..> Solution
 ```
 
-##Käyttäjä suorittaa laskutoimituksen
+## Käyttäjä suorittaa laskutoimituksen
 ```mermaid
 sequenceDiagram
     actor User
