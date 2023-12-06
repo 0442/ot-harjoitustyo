@@ -14,8 +14,8 @@ Sovelluksessa on ainakin tavallisia käyttäjiä sekä mahdollisesti myös pää
 
 #### Kirjautumisen jälkeen
 * Käyttäjä voi selata omaa laskuhistoriansa
-* Käyttäjä voi valita mitä laskinohjelmistoa käyttää
-* Käyttäjä voi laskea laskuja valitulla laskinohjelmistolla
+* Käyttäjä voi valita mitä laskinohjelmistoa käyttää (tehty)
+* Käyttäjä voi laskea laskuja valitulla laskinohjelmistolla (porrasmuotolaskin tehty)
 * Käyttäjä voi kopioida vastauksen LaTeX -muodossa
 * Käyttäjä voi kirjautua ulos.
 
@@ -27,5 +27,3 @@ Sovelluksessa on ainakin tavallisia käyttäjiä sekä mahdollisesti myös pää
     * laskinohjelman jolla matriiseja voisi viedä redusoituun porrasmuotoon.
     * laskinohjelman jolla voisi etsiä käänteismatriisin
     * tuki polynomeille matriisilaskuissa
-
-(Ei "tehty" -merkintöjä sillä ei vielä täysin valmiita toiminnalisuuksia.)
