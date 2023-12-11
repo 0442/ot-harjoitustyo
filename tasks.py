@@ -5,6 +5,10 @@ def start(ctx: Context):
     ctx.run("python3 src/main.py", pty=True)
 
 @task
+def build(ctx: Context):
+    ctx.run("python3 src/init_database.py", pty=True)
+
+@task
 def test(ctx: Context):
     ctx.run("pytest src", pty=True)
 
