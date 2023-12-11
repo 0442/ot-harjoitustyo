@@ -3,60 +3,91 @@ from typing import TypeAlias, NamedTuple
 from calculator.utils.rational_number import Rn
 
 
+Num: TypeAlias = Rn | int | float
+Matrix: TypeAlias = list[list[Rn | int | float]]
+RowVector: TypeAlias = list[Rn | int | float]
+
+
 class SolutionStep(NamedTuple):
-    """Represents a step in the process of solving / calculating"""
+    """Represents a step in the process of solving or calculating.
+
+    Attributes:
+        description (str): A description of the step.
+        state (Matrix): The current state of the calculation.
+    """
+
     description: str
-    state: list[list[Rn]]
+    state: Matrix
 
 
 Step: TypeAlias = SolutionStep
 
 
-def add_row(row1: list[Rn], row2: list[Rn], scalar: Rn | int) -> list[int]:
-    """Returns row + (scalar * row2).
+def add_row(row1: RowVector, row2: RowVector, scalar: Num = 1) -> RowVector:
+    """Returns row1 + (scalar * row2).
 
-    row2 is multiplied by scalar and added to row1 and the resulting
-    vector is returned.
+    Args:
+        row1 (RowVector): The first row vector.
+        row2 (RowVector): The second row vector.
+        scalar (Num): The scalar multiplier (default is 1).
 
-    Rows are lists of rational numbers. Scalar is an integer.
+    Returns:
+        RowVector: The resulting row vector.
 
-    Rows must be the same length, otherwise an ValueError is raised.
+    Raises:
+        ValueError: If row vectors are of different lengths.
     """
+
     if len(row1) != len(row2):
         raise ValueError("Row vectors must be of same length.")
 
-    result_vector = []
-    col_count = len(row1)
-
-    for col_i in range(col_count):
-        result_vector.append(row1[col_i] + row2[col_i] * scalar)
-
+    result_vector = [elem1 + elem2 * scalar for elem1, elem2 in zip(row1, row2)]
     return result_vector
 
 
-def subtract_row(row1: list[int], row2: list[int], scalar: Rn | int) -> list[int]:
-    """
-    Same as calling add_row with a scalar*(-1).
-    Refer to add_row for documentation.
+def subtract_row(row1: RowVector, row2: RowVector, scalar: Rn = 1) -> RowVector:
+    """Returns row1 - (scalar * row2).
+
+    Args:
+        row1 (RowVector): The first row vector.
+        row2 (RowVector): The second row vector.
+        scalar (Num): The scalar multiplier (default is 1).
+
+    Returns:
+        RowVector: The resulting row vector.
+
+    Raises:
+        ValueError: If row vectors are of different lengths.
     """
     return add_row(row1, row2, -scalar)
 
 
-def multiply_row(row: list[Rn | int], scalar: Rn | int):
-    new_row = []
-    for element in row:
-        new_row.append(element * scalar)
-    return new_row
+def multiply_row(row: RowVector, scalar: Rn) -> RowVector:
+    """Returns a new row where each element is multiplied by the scalar.
 
+    Args:
+        row (List[Num]): The row to be multiplied.
+        scalar (Num): The scalar multiplier.
 
-def arrange_matrix(matrix: list[list[Rn]], reverse: bool = False) -> list[list[Rn]]:
-    """
-    Arranges rows in matrices so that the least amount of leading
-    consecutive zeros are at the top and the most leading
-    consecutive zeros are at the bottom.
+    Returns:
+        RowVector: The resulting row vector.
     """
 
-    def leading_zeros(row: list[Rn]):
+    return [element * scalar for element in row]
+
+
+def arrange_matrix(matrix: Matrix, reverse: bool = False) -> Matrix:
+    """Arranges rows in matrices to by leading consecutive zeros.
+
+    Args:
+        matrix (Matrix): The matrix to be arranged.
+        reverse (bool): If True, arranges in descending order (default is False).
+
+    Returns:
+        Matrix: The arranged matrix.
+    """
+
+    def leading_zeros(row: RowVector):
         col_i = 0
         count = 0
         while col_i < len(row) and row[col_i] == 0:
@@ -69,7 +100,15 @@ def arrange_matrix(matrix: list[list[Rn]], reverse: bool = False) -> list[list[R
     return result_matrix
 
 
-def leading_num_to_one(row: list[Rn]):
+def leading_num_to_one(row: RowVector) -> RowVector:
+    """Returns a new row vector by multiplying it to make the leading number 1.
+
+    Args:
+        row (RowVector): The row to be transformed.
+
+    Returns:
+        RowVector: The resulting row.
+    """
     new_row = row[:]
 
     for elem in row:
@@ -80,9 +119,16 @@ def leading_num_to_one(row: list[Rn]):
     return new_row
 
 
-def all_leading_nums_to_one(matrix: list[list[Rn]], steps: list[Step]):
-    """Multiply each row of a matrix so that the leading numbers
-    of each row becomes 1."""
+def all_leading_nums_to_one(matrix: Matrix, steps: list[Step]) -> Matrix:
+    """Multiply each row of a matrix to make the leading numbers 1.
+
+    Args:
+        matrix (Matrix): The matrix to be transformed.
+        steps (List[Step]): The list to append steps to (modified in place).
+
+    Returns:
+        Matrix: The resulting matrix.
+    """
     result = matrix[:]
 
     for row_i, row in enumerate(matrix):
@@ -95,9 +141,11 @@ def all_leading_nums_to_one(matrix: list[list[Rn]], steps: list[Step]):
     return result
 
 
-def first_non_zero(vector: list[Rn]):
-    """Finds the index of the first non-zero number in list
-    Returns None if all numbers are zeros.
+def first_non_zero(vector: RowVector) -> int:
+    """Finds the index of the first non-zero number in a list.
+
+    Returns:
+        int: The index of the first non-zero number or None if all numbers are zeros.
     """
     for i, num in enumerate(vector):
         if num != 0:
@@ -105,9 +153,9 @@ def first_non_zero(vector: list[Rn]):
     return None
 
 
-def validate_matrix(matrix: list[list[Rn]]):
+def validate_matrix(matrix: Matrix):
     width = len(matrix[0])
 
     for row in matrix:
         if len(row) != width:
-            raise ValueError
+            raise ValueError("All rows must have the same length.")
