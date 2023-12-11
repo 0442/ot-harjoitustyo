@@ -1,14 +1,14 @@
 from tkinter import Tk, ttk, StringVar, IntVar, Text
 from tkinter.constants import *
 
-from calculator.calculator_service import CalculatorService, str_to_matrix
-from ui.base_view import _View
+from calculator.calculator_app import App, str_to_matrix
+from ui.base_view import BaseView
 
 
-class MatrixCalculator(_View):
-    def __init__(self, root: Tk, calculator: CalculatorService) -> None:
+class MatrixCalculator(BaseView):
+    def __init__(self, root: Tk, app: App) -> None:
         super().__init__(root)
-        self._calculator = calculator
+        self._app = app
 
     def _layout(self):
         input_label = ttk.Label(master=self._frame, text="Expression")
@@ -23,9 +23,9 @@ class MatrixCalculator(_View):
         self._root.grid_columnconfigure(1, minsize=300)
 
 
-class EchelonCalculator(_View):
-    def __init__(self, root: Tk, calculator: CalculatorService) -> None:
-        self._calculator = calculator
+class EchelonCalculator(BaseView):
+    def __init__(self, root: Tk, app: App) -> None:
+        self._app = app
         self._input_var = StringVar()
         self._output_var = StringVar()
         self._interp_var = StringVar()
@@ -66,7 +66,7 @@ class EchelonCalculator(_View):
         try:
             expr = self._input_var.get()
             self._interp_var.set(f"Interpreted as: {str_to_matrix(expr)}")
-            result = self._calculator.find_row_reduce(expr)
+            result = self._app.find_row_reduce(expr)
             self._output_var.set(result)
         except Exception as e:
             print(e)

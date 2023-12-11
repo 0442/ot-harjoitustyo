@@ -1,8 +1,10 @@
 from tkinter import Tk, ttk
 from tkinter.constants import *
 
+from abc import ABC, abstractmethod
 
-class _View:
+
+class BaseView(ABC):
     """Base class for a view
 
     Overwrite _layout() to define custom views for sub classes.
@@ -24,7 +26,9 @@ class _View:
     def pack(self):
         self._frame.pack(fill=X)
 
-    def _layout(self): ...
+    @abstractmethod
+    def _layout(self):
+        pass
 
     @property
     def frame(self):
