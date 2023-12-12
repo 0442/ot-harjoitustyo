@@ -26,8 +26,8 @@ def str_to_num(num_str: str) -> Num:
             return float(num_str)
 
         return int(num_str)
-    except ValueError:
-        raise ValueError(f"Invalid number format: {num_str}")
+    except ValueError as exc:
+        raise ValueError(f"Invalid number format: {num_str}") from exc
 
 
 def str_to_matrix(expression: str) -> Matrix:
@@ -85,4 +85,4 @@ class CalculatorService:
         return str(result)
 
     def matrix_calc(self, expression: str) -> str:
-        ...
+        print(expression)

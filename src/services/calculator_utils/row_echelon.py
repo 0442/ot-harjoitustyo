@@ -14,7 +14,8 @@ def row_echelon(matrix: Matrix, steps: list = None) -> Matrix:
 
     Args:
         matrix (Matrix): A matrix which should be reduced.
-        steps (list, optional): A List which will be filled with the steps of the calculation. Defaults to None.
+        steps (list, optional): A List which will be filled with
+        the steps of the calculation. Defaults to None.
 
     Returns:
         Matrix: The resulting matrix.
@@ -69,7 +70,8 @@ def reduced_row_echelon(matrix: Matrix, steps: list = None) -> Matrix:
 
     Args:
         matrix (Matrix): A matrix which should be reduced.
-        steps (list, optional): A List which will be filled with the steps of the calculation. Defaults to None.
+        steps (list, optional): A List which will be filled with
+        the steps of the calculation. Defaults to None.
 
     Returns:
         Matrix: The resulting matrix.

@@ -19,5 +19,3 @@ class HistoryRepository:
 
 
 history_repository = HistoryRepository(connection)
-
-

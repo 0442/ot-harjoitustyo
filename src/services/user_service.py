@@ -12,7 +12,8 @@ class UserService:
         """Gets calulation history for logged in user.
 
         Returns:
-            list[str] | None: Returns history of calculations if user is logged in, otherwise None.
+            list[str] | None: Returns history of calculations if user is
+            logged in, otherwise None.
         """
         if self._user is None:
             return None
@@ -27,14 +28,16 @@ class UserService:
             password (str): User's password
 
         Returns:
-            tuple[bool, str|None]: Bool value indicates whether the login was successful. The str value contains an error message if the login failed and None if successful.
+            tuple[bool, str|None]: Bool value indicates whether the login
+            was successful. The str value contains an error message if
+            the login failed and None if successful.
         """
         user = self._user_repo.find_user(username)
         if user is None or user.password != password:
             return False, "Invalid username or password"
-        else:
-            self._user = user
-            return True, None
+
+        self._user = user
+        return True, None
 
 
     def log_out(self) -> None:
@@ -51,7 +54,9 @@ class UserService:
             password (str): Password for new user.
 
         Returns:
-            tuple[bool, str|None]: Bool value indicates whether the login was successful. The str value contains an error message if the login failed and None if successful.
+            tuple[bool, str|None]: Bool value indicates whether the login
+            was successful. The str value contains an error message if
+            the login failed and None if successful.
         """
 
         resp = self._user_repo.find_user(username)
