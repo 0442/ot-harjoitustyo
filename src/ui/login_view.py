@@ -1,25 +1,25 @@
 from tkinter import Tk, ttk, StringVar, IntVar
 from tkinter.constants import *
 
-from calculator.calculator_app import App
+from services.user_service import UserService
 from ui.base_view import BaseView
 
 
 class LoginView(BaseView):
     def __init__(self,
                  root: Tk,
-                 app: App,
+                 users: UserService,
                  handle_back=lambda: None) -> None:
         self._handle_back = handle_back
 
-        self._app = app
+        self._users = users
         self._notif = StringVar()
         self._username = StringVar()
         self._password = StringVar()
         super().__init__(root)
 
     def _log_in(self):
-        success, notif = self._app.log_in(self._username.get(),
+        success, notif = self._users.log_in(self._username.get(),
                                           self._password.get())
         if success == False:
             self._notif.set(notif)
@@ -27,7 +27,7 @@ class LoginView(BaseView):
             self._handle_back()
 
     def _register(self):
-        _, notif = self._app.register(self._username.get(),
+        _, notif = self._users.register(self._username.get(),
                                       self._password.get())
         self._notif.set(notif)
 

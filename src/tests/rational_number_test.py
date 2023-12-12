@@ -1,6 +1,6 @@
 import unittest
 
-from calculator.utils.rational_number import Rn
+from services.calculator_utils.rational_number import Rn
 
 
 class TestRatNumWithInts(unittest.TestCase):

@@ -1,19 +1,19 @@
 from tkinter import Tk, ttk, scrolledtext
 from tkinter.constants import *
 
-from calculator.calculator_app import App
+from services.user_service import UserService
 from ui.base_view import BaseView
 
 class HistoryView(BaseView):
     def __init__(self,
                  root: Tk,
-                 app: App,
+                 users: UserService,
                  handle_back=lambda: None) -> None:
         self._handle_back = handle_back
 
-        self._app = app
-        self._history = self._app.get_history()
-        if self._app.user is None:
+        self._users = users
+        self._history = self._users.get_history()
+        if self._users.user is None:
             self._history = (
                 "You must log in first to view you calculation history."
             )

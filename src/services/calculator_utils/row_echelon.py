@@ -1,5 +1,5 @@
-from calculator.utils.rational_number import Rn
-from calculator.utils.matrix_utils import (
+from services.calculator_utils.rational_number import Rn
+from services.calculator_utils.matrix_utils import (
     Matrix,
     validate_matrix,
     add_row,

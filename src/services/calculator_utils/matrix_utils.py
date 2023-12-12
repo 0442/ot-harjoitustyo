@@ -1,6 +1,6 @@
 from typing import TypeAlias, NamedTuple
 
-from calculator.utils.rational_number import Rn
+from services.calculator_utils.rational_number import Rn
 
 
 Num: TypeAlias = Rn | int | float

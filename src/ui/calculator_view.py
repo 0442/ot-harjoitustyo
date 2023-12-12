@@ -1,7 +1,8 @@
 from tkinter import Tk, ttk, StringVar, IntVar
 from tkinter.constants import *
 
-from calculator.calculator_app import App
+from services.calculator_service import CalculatorService
+from services.user_service import UserService
 from ui.base_view import BaseView
 from ui.calculator_tabs import *
 
@@ -9,16 +10,18 @@ from ui.calculator_tabs import *
 class CalculatorView(BaseView):
     def __init__(self,
                  root: Tk,
-                 app: App,
+                 calculator: CalculatorService,
+                 user: UserService,
                  nav_login=lambda: None,
                  nav_hist=lambda: None) -> None:
-        self._app = app
+        self._calculator = calculator
+        self._user = user
         self._nav_login = nav_login
         self._nav_hist = nav_hist
         super().__init__(root)
 
     def _log_out(self):
-        self._app.log_out()
+        self._user.log_out()
         self._layout()
 
     def _layout(self):
@@ -37,8 +40,8 @@ class CalculatorView(BaseView):
         sep = ttk.Separator(self._frame)
 
         tabs_cont = ttk.Notebook(master=self._frame)
-        matrix_calc = MatrixCalculator(tabs_cont, self._app)
-        echelon_calc = EchelonCalculator(tabs_cont, self._app)
+        matrix_calc = MatrixCalculator(tabs_cont, self._calculator)
+        echelon_calc = EchelonCalculator(tabs_cont, self._calculator)
         tabs_cont.add(child=matrix_calc.frame, text="Matrix calculator")
         tabs_cont.add(child=echelon_calc.frame, text="Row echelon calculator")
 
@@ -46,10 +49,10 @@ class CalculatorView(BaseView):
         for widget in self._frame.winfo_children():
             widget.grid_forget()
 
-        if self._app.user is None:
+        if self._user.user is None:
             login_button.grid(row=0, column=2, sticky=(E))
         else:
-            logged_in_label = ttk.Label(master=self._frame, text=self._app.user.username)
+            logged_in_label = ttk.Label(master=self._frame, text=self._user.user.username)
             logged_in_label.grid(row=0, column=0)
             logout_button.grid(row=0, column=2, sticky=(E))
             login_button.grid_remove()

@@ -1,6 +1,6 @@
 import unittest
 
-from calculator.utils.row_echelon import *
+from services.calculator_utils.row_echelon import *
 
 
 class TestEchelon(unittest.TestCase):
