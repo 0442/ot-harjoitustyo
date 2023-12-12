@@ -12,3 +12,8 @@
 - Yhdistetty osa matriisilaskimesta käyttöliittymään `CalculatorService`:llä; sovelluksella voi nyt viedä matriiseja redusoituun porrasmuotoon.
 - Lisätty sivu laskuhistorian katselemista varten. Toiminnallisuutta ei vielä toteutettu.
 
+## Viikko 6
+- Luotu luokat `UserRepository` ja `HistoryRepository`
+- Tietokantayhteydet ja tietokantojen alustaminen
+- Toteutettu käyttäjän luominen, kirjautuminen ja uloskirjautuminen.
+- Eriytetty luokka `CalculatorService` kahdeksi luokaksi `CalculatorService` ja `UserService`

@@ -8,16 +8,16 @@ Sovelluksessa on ainakin tavallisia käyttäjiä sekä mahdollisesti myös pää
 ## Toiminnallisuudet
 ### Perusversion toiminnallisuudet
 #### Ennen kirjautumista
-* Käyttäjä voi luoda käyttäjätunnukset, tietyillä rajoituksilla käyttäjänimen ja salasanan formaattiin
-* Käyttäjä voi kirjautua sisään luomillaan tunnuksilla
-* Käyttäjä voi mahdollisesti myös käyttää sovellusta kirjautumatta, jollin ainakaan laskuhistoria ei olisi käytössä
+* Käyttäjä voi luoda käyttäjätunnukset, tietyillä rajoituksilla käyttäjänimen ja salasanan formaattiin (osittain tehty)
+* Käyttäjä voi kirjautua sisään luomillaan tunnuksilla (tehty)
+* Käyttäjä voi mahdollisesti myös käyttää sovellusta kirjautumatta, jollin ainakaan laskuhistoria ei olisi käytössä (tehty)
 
 #### Kirjautumisen jälkeen
 * Käyttäjä voi selata omaa laskuhistoriansa
 * Käyttäjä voi valita mitä laskinohjelmistoa käyttää (tehty)
 * Käyttäjä voi laskea laskuja valitulla laskinohjelmistolla (porrasmuotolaskin tehty)
 * Käyttäjä voi kopioida vastauksen LaTeX -muodossa
-* Käyttäjä voi kirjautua ulos.
+* Käyttäjä voi kirjautua ulos. (tehty)
 
 ### Jatkokehitysideoita
 * Välivaiheiden tarkastelu

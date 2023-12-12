@@ -15,4 +15,6 @@
 |             | 0.5        | dokumentaatio |
 |             | 0.5        | testejä laskimelle |
 | 5.12.2023   | 5.0        | refaktorointia, CalculatorService, historianäkymä |
-| Yhteensä:   | 26         |   |
+| 11.12.2023  | 5.0        | refaktorointia, docstring, UserRepostiory, HistoryRepostiory kirjautuminen, UI muutoksia |
+| 12.12.2023  | 2.0        | CalculatorService jakaminen osiin, dokumentaatio |
+| Yhteensä:   | 33         |   |
