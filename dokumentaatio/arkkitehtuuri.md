@@ -30,8 +30,8 @@ classDiagram
     calculatorUtilities --> RatNum
 ```
 ## Käyttöliittymä
-Käyttöliittymästä vastaa `UI`-luokka. Käyttöliittymätaso eli `UI` kommunikoi sovelluslogiikkatason kanssa käyttämällä CalculatorService- ja UserService-luokkia.
-Käyttöliittymässä on kolme eri näkymää ja laskinnäkymässä laskinkomponentilla kaksi eri välilehteä. Näkymiä ja välilehtiä vastaavat luokat perivät `BaseView`-luokan.
+Käyttöliittymästä vastaa `UI`-luokka. Käyttöliittymätaso eli `UI` kommunikoi sovelluslogiikkatason kanssa käyttämällä `CalculatorService`- ja `UserService`-luokkia.
+Käyttöliittymässä on kolme eri näkymää, `CalculatorView`, `LoginView` ja `HistoryView`. Laskinnäkymässä laskinkomponentilla on lisäksi kaksi eri välilehteä. . Näkymiä ja välilehtiä vastaavat luokat perivät `BaseView`-luokan.
 Näkymien vaihtamista kontrolloi `UI`-luokka.
 ```mermaid
     classDiagram
@@ -69,6 +69,8 @@ Vastaa käyttäjän kirjautumiseen ja historiaan liittyvästä rajapinnasta. `Us
 ## Tietokanta
 Tietokannan kanssa kommunikoinnista vastaavat `UserRepository` ja `HistoryRepository`. Luokat käyttävät SQLite3 tietokantaa.
 Luokat noudattavat Repository-mallia.
+
+# Tominnallisuuksia
 
 ## Käyttäjä suorittaa laskutoimituksen
 ```mermaid
