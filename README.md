@@ -9,7 +9,7 @@ Ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
 * [Työaikakirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [Changelog](dokumentaatio/changelog.md)
 * [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
-* [Release](https://github.com/0442/ot-harjoitustyo/releases/tag/viikko5)
+* [Releaset](https://github.com/0442/ot-harjoitustyo/releases)
 * [Käyttöohje](dokumentaatio/kayttoohje.md)
 
 ## Asentaminen
@@ -35,7 +35,16 @@ Ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
 ```shell
     poetry run invoke test
 ```
+### Tietokannan alustaminen:
+```shell
+    poetry run invoke build
+```
 ### Testikattavuusraportin luominen:
 ```shell
     poetry run invoke coverage-report
 ```
+### Pylint:
+```shell
+    poetry run invoke lint
+```
+
