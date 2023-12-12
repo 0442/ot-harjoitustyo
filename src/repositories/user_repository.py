@@ -1,5 +1,5 @@
 from typing import NamedTuple
-from sqlite3 import Connection
+from sqlite3 import Connection, IntegrityError
 
 from database_connection import connection
 
@@ -36,7 +36,8 @@ class UserRepository:
                 ) VALUES (?, ?)""",
                 (user.username, user.password)
             )
-        except:
+        except IntegrityError as e:
+            print(e)
             return False
 
         self._db_connection.commit()
