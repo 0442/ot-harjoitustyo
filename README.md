@@ -10,13 +10,18 @@ Ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
 * [Changelog](dokumentaatio/changelog.md)
 * [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
 * [Release](https://github.com/0442/ot-harjoitustyo/releases/tag/viikko5)
+* [Käyttöohje](dokumentaatio/kayttoohje.md)
 
 ## Asentaminen
 1. Asenna riippuvuudet:
 ```shell
     poetry install
 ```
-2. Aja sovellus:
+2. Alusta tietokanta:
+```shell
+    poetry run invoke build
+```
+3. Aja sovellus:
 ```shell
     poetry run invoke start
 ```
