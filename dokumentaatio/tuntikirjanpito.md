@@ -17,4 +17,5 @@
 | 5.12.2023   | 5.0        | refaktorointia, CalculatorService, historianäkymä |
 | 11.12.2023  | 5.0        | refaktorointia, docstring, UserRepostiory, HistoryRepostiory kirjautuminen, UI muutoksia |
 | 12.12.2023  | 2.0        | CalculatorService jakaminen osiin, dokumentaatio |
-| Yhteensä:   | 33         |   |
+|             | 0.5        | CalculatorService testejä |
+| Yhteensä:   | 33.5         |   |
