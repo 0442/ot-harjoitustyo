@@ -4,6 +4,7 @@ from tkinter.constants import *
 from services.user_service import UserService
 from ui.base_view import BaseView
 
+
 class HistoryView(BaseView):
     def __init__(self,
                  root: Tk,
@@ -30,12 +31,16 @@ class HistoryView(BaseView):
 
         box = ttk.LabelFrame(master=self._frame,
                              text="History", padding="15 15 15 15")
-        box.grid(row=1, column=0, sticky=(NW, SE))
+
+        self._frame.grid_rowconfigure(0, weight=0)
+        self._frame.grid_rowconfigure(1, weight=1)
+
+        box.grid(row=1, column=0, sticky=(N, S, E, W))
+        box.grid_columnconfigure(0, weight=1)
+        box.grid_rowconfigure(0, weight=1)
 
         history_text = scrolledtext.ScrolledText(master=box)
         history_text.insert(END, self._history)
         history_text.config(state=DISABLED)
 
-        history_text.grid(row=2, column=0, sticky=(E,W))
-
-        box.grid_columnconfigure(0, minsize=300)
+        history_text.grid(row=0, column=0, sticky=(N, S, E, W))

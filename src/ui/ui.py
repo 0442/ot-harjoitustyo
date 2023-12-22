@@ -19,6 +19,11 @@ class UI:
         self._calculator = calculator
         self._user = user
 
+        self._root.geometry("600x600")
+        self._root.grid_propagate(True)
+        self._root.grid_columnconfigure(0, weight=1, minsize=300)
+        self._root.grid_rowconfigure(0, weight=1, minsize=300)
+
     def _close_current_view(self):
         if self._current_view:
             self._current_view.close()
@@ -54,4 +59,3 @@ class UI:
 
 window = Tk()
 window.title("Matriisilaskin")
-

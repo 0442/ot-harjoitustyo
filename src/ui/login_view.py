@@ -3,6 +3,7 @@ from tkinter.constants import *
 
 from services.user_service import UserService
 from ui.base_view import BaseView
+from entities.user import User
 
 
 class LoginView(BaseView):
@@ -19,16 +20,16 @@ class LoginView(BaseView):
         super().__init__(root)
 
     def _log_in(self):
-        success, notif = self._users.log_in(self._username.get(),
-                                          self._password.get())
+        user = User(self._username.get(), self._password.get())
+        success, notif = self._users.log_in(user)
         if success == False:
             self._notif.set(notif)
         else:
             self._handle_back()
 
     def _register(self):
-        _, notif = self._users.register(self._username.get(),
-                                      self._password.get())
+        user = User(self._username.get(), self._password.get())
+        _, notif = self._users.register(user)
         self._notif.set(notif)
 
     def _layout(self):
@@ -39,7 +40,7 @@ class LoginView(BaseView):
 
         box = ttk.LabelFrame(master=self._frame,
                              text="Log in", padding="15 15 15 15")
-        box.grid(row=1, column=0, sticky=(NW, SE))
+        box.grid(row=1, column=0, sticky=(N, S, E, W))
 
         notif_label = ttk.Label(master=box, textvariable=self._notif)
 
@@ -56,14 +57,16 @@ class LoginView(BaseView):
                                      text="Register",
                                      command=self._register)
 
-        notif_label.grid(row=3, column=0, columnspan=5)
-        username_label.grid(row=4, column=0, sticky=(W), pady=5)
-        username_input.grid(row=4, column=1, sticky=(W, E), pady=5)
+        self._frame.grid_rowconfigure(0, weight=0)
+        box.grid_columnconfigure(0, weight=0)
+        box.grid_columnconfigure(1, weight=1)
 
-        password_label.grid(row=5, column=0, sticky=(W), pady=5)
-        password_input.grid(row=5, column=1, sticky=(W, E), pady=5)
+        notif_label.grid(row=0, column=0, columnspan=5)
+        username_label.grid(row=1, column=0, sticky=(W), pady=5)
+        username_input.grid(row=1, column=1, sticky=(W, E), pady=5)
 
-        login_button.grid(row=6, column=0)
-        register_button.grid(row=6, column=1)
+        password_label.grid(row=2, column=0, sticky=(W), pady=5)
+        password_input.grid(row=2, column=1, sticky=(W, E), pady=5)
 
-        box.grid_columnconfigure(1, minsize=300)
+        login_button.grid(row=3, column=0, sticky=(W))
+        register_button.grid(row=3, column=1, sticky=(W))
