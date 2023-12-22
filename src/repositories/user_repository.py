@@ -1,13 +1,7 @@
-from typing import NamedTuple
 from sqlite3 import Connection, IntegrityError
 
 from database_connection import connection
-
-
-class User(NamedTuple):
-    """Represents a user."""
-    username: str
-    password: str
+from entities.user import User
 
 
 class UserRepository:
@@ -30,7 +24,8 @@ class UserRepository:
 
         cursor = self._db_connection.cursor()
         try:
-            cursor.execute("""
+            cursor.execute(
+                """
                 INSERT INTO users (
                     username, password
                 ) VALUES (?, ?)""",
@@ -54,7 +49,8 @@ class UserRepository:
         """
 
         cursor = self._db_connection.cursor()
-        res = cursor.execute("""
+        res = cursor.execute(
+            """
             SELECT username, password
             FROM users
             WHERE username = ?""",
@@ -67,7 +63,7 @@ class UserRepository:
         user = User(res[0], res[1])
         return user
 
-    def delete_user(self, user: User):
+    def delete_user(self, user: User) -> None:
         """Deletes a user.
 
         Args:
@@ -78,6 +74,13 @@ class UserRepository:
         cursor.execute("DELETE FROM users WHERE username = ? AND password = ?",
                        (user.username, user.password))
 
+        self._db_connection.commit()
+
+    def clear_database(self) -> None:
+        """Delete all users from database.
+        """
+        cursor = self._db_connection.cursor()
+        cursor.execute("DELETE FROM users")
         self._db_connection.commit()
 
 
