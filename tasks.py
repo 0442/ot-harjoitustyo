@@ -10,7 +10,8 @@ def build(ctx: Context):
 
 @task
 def test(ctx: Context):
-    ctx.run("pytest src", pty=True)
+    ctx.run("TEST=1 python3 src/init_database.py", pty=True)
+    ctx.run("TEST=1 pytest src", pty=True)
 
 @task
 def coverage(ctx: Context):
