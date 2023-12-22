@@ -14,6 +14,9 @@ Testit ajetaan komennolla `poetry run invoke test`. Komento asettaa ympäristöm
 ### Testikattavuusraportti
 ![image](https://github.com/0442/ot-harjoitustyo/assets/69271621/24264e5f-3682-4b2d-a8da-81ba19946291)
 
+Entities -kansion tiedostot eivät juurikaan sisällä logiikkaa. Myös calculator_utilsissa types.py sisältää vain tyyppejä, joten testattavaa ei ole myöskään siellä.
+latex_generator.py:ssä olevilla LaTeX -koodia generoiville funktioille ei ole automaattisia testejä. Myöskään yksittäisiä matriisioperaatioita vastaavia funktioita matrix_utils.py -tiedostossa ei ole automaattisesti testattu. str_to_matrix ja str_to_num funkioille ei myöskään ole automaattisia testejä.
+
 ## Järjeselmätestaus
 Järjestelmätestaus suoritetaan manuaaalisesti.
 
