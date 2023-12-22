@@ -7,6 +7,21 @@ Hyväksyttyjä ympäristömuuttujia ovat
   * `LATEX_MAT_BEGIN` matriisiblokin aloittava komento, esim. "\\[\\begin{bmatrix}" tai "\\[\\begin{matrix}"
   * `LATEX_MAT_END` matriisiblokin lopettava komento, esim. "\\end{bmatrix}\\]" tai "\\end{matrix}\\]"
   * `INDENT` LaTeX -koodissa käytettävä indentaatio
+ 
+## Asentaminen ja käynnistäminen
+1. Asenna riippuvuudet:
+```shell
+    poetry install
+```
+2. Alusta tietokanta:
+```shell
+    poetry run invoke build
+```
+3. Aja sovellus:
+```shell
+    poetry run invoke start
+```
+
 ## Laskeminen
 Ohjelma aukeaa laskinnäkymään, jossa voi heti laskea matriisilaskuja. Laskinnäkymässä on kaksi eri välilehteä: Matrix calculator ja Row echelon calculator.
 
