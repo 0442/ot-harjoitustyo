@@ -17,3 +17,9 @@
 - Tietokantayhteydet ja tietokantojen alustaminen
 - Toteutettu käyttäjän luominen, kirjautuminen ja uloskirjautuminen.
 - Eriytetty luokka `CalculatorService` kahdeksi luokaksi `CalculatorService` ja `UserService`
+
+## Viikko 7
+- Käyttöliittymästä responsiivinen
+- LaTeX -koodin generointi välivaiheista porrasmuotolaskimessa
+- Matriisilaksin +,-,* -laskuille
+- Konfiguraatioita LaTeX -koodin generointiin
