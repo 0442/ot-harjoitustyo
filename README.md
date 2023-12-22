@@ -1,16 +1,16 @@
 # Matriisilaskinohelmisto
-## Valmiin sovelluksen kuvaus:
-Sovelluksella voidaan suorittaa joitakin operaatiota matriiseille, kuten matriisikertolaskuja sekä saattaa matriiseja supistettuun porrasmuotoon Gaussin-Jordanin eliminointimenetelmällä.
-Ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
-
+Sovelluksella voidaan suorittaa yhteen- vähennys- ja kertolaskuja matriiseien välillä. 
+Lisäksi laskimella voidaan saattaa matriiseja supistettuun porrasmuotoon Gaussin-Jordanin eliminointimenetelmällä.
+Porrasmuotolaskujen ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä voi kopioida.
 
 ## Dokumentaatio
 * [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
 * [Työaikakirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [Changelog](dokumentaatio/changelog.md)
 * [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
-* [Releaset](https://github.com/0442/ot-harjoitustyo/releases)
 * [Käyttöohje](dokumentaatio/kayttoohje.md)
+* [Releaset](https://github.com/0442/ot-harjoitustyo/releases)
+
 
 ## Asentaminen
 1. Asenna riippuvuudet:
