@@ -9,6 +9,7 @@ Porrasmuotolaskujen ratkaisuista sovellus luo LaTeX -version, jonka käyttäjä 
 * [Changelog](dokumentaatio/changelog.md)
 * [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
 * [Käyttöohje](dokumentaatio/kayttoohje.md)
+* [Testaus](dokumentaatio/testaus.md)
 * [Releaset](https://github.com/0442/ot-harjoitustyo/releases)
 
 
