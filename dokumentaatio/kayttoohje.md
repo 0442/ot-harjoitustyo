@@ -4,9 +4,9 @@ Konfiguraatiot tehdään `.env`-tiedostoon.
 Hyväksyttyjä ympäristömuuttujia ovat
 * `DB_FILE_PATH` joka määrittää polun sqlite3 tietokantatiedostoon.
 * LaTeX -koodin generointi:
-  * `LATEX_MAT_BEGIN` matriisiblokin aloittava komento, esim. "\\[\\begin{bmatrix}" tai "\\[\\begin{matrix}"
-  * `LATEX_MAT_END` matriisiblokin lopettava komento, esim. "\\end{bmatrix}\\]" tai "\\end{matrix}\\]"
-  * `INDENT` LaTeX -koodissa käytettävä indentaatio
+  * `LATEX_MAT_BEGIN` matriisiblokin aloittava komento, esim. `"\\[\\begin{bmatrix}"` tai `"\\[\\begin{matrix}"`
+  * `LATEX_MAT_END` matriisiblokin lopettava komento, esim. `"\\end{bmatrix}\\]"` tai `"\\end{matrix}\\]"`
+  * `LATEX_INDENT` LaTeX -koodissa käytettävä indentaatio
 Huom: Jos `DB_FILE_PATH` -konfiguraatiota muokkaa, tulee joko aikaisempi tietokanta nimetä uudelleen vastaamaan uutta konfiguraatiota tai tietokanta alustaa käyttöohjeiden mukaisesti uudelleen.
 ## Asentaminen ja käynnistäminen
 1. Asenna riippuvuudet:
