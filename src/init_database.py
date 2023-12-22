@@ -24,7 +24,9 @@ def init_db(db_conn: Connection) -> None:
     cursor.execute(
         """
         CREATE TABLE history (
-            expression text primary key,
+            id integer primary key,
+            calculation text,
+            answer text,
             username text,
             FOREIGN KEY(username) REFERENCES users(username)
         )
